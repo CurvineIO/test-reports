@@ -1,0 +1,73 @@
+baseURL: https://curvineio.github.io/test-reports/
+title: Curvine Test Reports
+enableRobotsTXT: true
+enableGitInfo: true
+hasCJKLanguage: true
+defaultContentLanguage: zh-cn
+enableInlineShortcodes: true
+
+languages:
+  zh-cn:
+    label: 简体中文
+    locale: zh-cn
+    title: Curvine Test Reports
+    weight: 1
+
+module:
+  hugoVersion:
+    extended: true
+    min: "0.146.0"
+  imports:
+    - path: github.com/imfing/hextra
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+
+menu:
+  main:
+    - name: 报告
+      pageRef: /reports
+      weight: 1
+    - name: Search
+      weight: 2
+      params:
+        type: search
+    - name: GitHub
+      weight: 3
+      url: https://github.com/CurvineIO/test-reports
+      params:
+        icon: github
+
+params:
+  description: Curvine 近 30 天公开测试结果
+  navbar:
+    displayTitle: true
+    displayLogo: false
+    width: wide
+  footer:
+    enable: true
+    displayCopyright: false
+    displayPoweredBy: false
+    width: wide
+  theme:
+    default: system
+    displayToggle: true
+  search:
+    enable: true
+    type: flexsearch
+  flexsearch:
+    index: content
+    tokenize: forward
+  editURL:
+    enable: false
+  page:
+    width: wide
+  toc:
+    displayTags: true
+
+taxonomies:
+  tag: tags

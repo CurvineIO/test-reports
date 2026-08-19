@@ -1,6 +1,8 @@
 ---
 title: "Curvine 全链路每日测试报告 - 2026-08-06"
+linkTitle: "2026-08-06 全链路"
 date: 2026-08-06T00:00:00Z
+weight: -20260806
 tags: [full-chain, daily, no-go]
 ---
 
@@ -8,6 +10,7 @@ tags: [full-chain, daily, no-go]
 
 ### 执行摘要
 
+> [!CAUTION]
 > 发布决策：**NO-GO**。流水线结果 **FAIL**；执行 7 个 profile，6 个通过，1 个失败。
 
 存在阻断性失败，当前提交不得作为可发布版本；需完成归因、修复和定向回归后重新执行全链路测试。
@@ -63,6 +66,7 @@ tags: [full-chain, daily, no-go]
 
 ### 性能基准
 
+> [!NOTE]
 > 门禁策略：**仅报告，不阻断** 全链路结果；低于 baseline 时标黄/标红供人工跟进。
 
 - 状态：**failed**

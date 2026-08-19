@@ -1,0 +1,23 @@
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var map = {
+    PASS: "pass",
+    pass: "pass",
+    passed: "pass",
+    GO: "pass",
+    FAIL: "fail",
+    fail: "fail",
+    failed: "fail",
+    FAILED: "fail",
+    "NO-GO": "fail",
+    degraded: "degraded",
+    NOT_RECORDED: "unknown"
+  };
+  document.querySelectorAll(".content table td").forEach(function (td) {
+    if (td.querySelector(".status-dot")) return;
+    var kind = map[td.textContent.trim()];
+    if (!kind) return;
+    td.innerHTML = '<span class="status-dot status-dot--' + kind + '">' + td.innerHTML.trim() + "</span>";
+  });
+});
+</script>

@@ -25,7 +25,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
           fetch-depth: 0
 
       - name: Prune reports older than 30 days
@@ -43,6 +42,11 @@ jobs:
           git commit -m "chore: prune reports older than 30 days [skip pages]"
           git push
 
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.24"
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
@@ -56,6 +60,9 @@ jobs:
           hugo version
 
       - name: Build
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
         run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact

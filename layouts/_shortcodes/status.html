@@ -1,0 +1,14 @@
+{{- $kind := lower (or (.Get 0) (.Get "kind") "pass") -}}
+{{- if eq $kind "passed" -}}{{- $kind = "pass" -}}{{- end -}}
+{{- if or (eq $kind "failed") (eq $kind "no-go") -}}{{- $kind = "fail" -}}{{- end -}}
+{{- if eq $kind "go" -}}{{- $kind = "pass" -}}{{- end -}}
+{{- if eq $kind "not_recorded" -}}{{- $kind = "unknown" -}}{{- end -}}
+{{- $label := trim .Inner " \n\r\t" -}}
+{{- if not $label -}}
+  {{- if eq $kind "pass" -}}{{- $label = "PASS" -}}
+  {{- else if eq $kind "fail" -}}{{- $label = "FAIL" -}}
+  {{- else if eq $kind "degraded" -}}{{- $label = "degraded" -}}
+  {{- else -}}{{- $label = or (.Get 0) "unknown" -}}
+  {{- end -}}
+{{- end -}}
+<span class="status-dot status-dot--{{ $kind }}">{{ $label }}</span>

@@ -1,0 +1,67 @@
+:root {
+  --hextra-max-page-width: 100%;
+  --hextra-max-navbar-width: 100%;
+  --hextra-max-footer-width: 100%;
+  --hextra-max-content-width: 100%;
+}
+
+.content table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.content table th,
+.content table td {
+  white-space: nowrap;
+}
+
+.status-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-dot::before {
+  content: "";
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: currentColor;
+}
+
+.status-dot--pass {
+  color: #16a34a;
+}
+
+.status-dot--fail {
+  color: #dc2626;
+}
+
+.status-dot--degraded {
+  color: #ca8a04;
+}
+
+.status-dot--unknown {
+  color: #9ca3af;
+}
+
+html.dark .status-dot--pass {
+  color: #4ade80;
+}
+
+html.dark .status-dot--fail {
+  color: #f87171;
+}
+
+html.dark .status-dot--degraded {
+  color: #facc15;
+}
+
+html.dark .status-dot--unknown {
+  color: #9ca3af;
+}
