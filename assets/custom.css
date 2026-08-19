@@ -1,0 +1,10 @@
+/* Wide result tables: keep columns aligned, scroll instead of wrapping. */
+article section {
+  overflow-x: auto;
+}
+
+article table {
+  width: max-content;
+  max-width: none;
+  white-space: nowrap;
+}
