@@ -1,39 +1,39 @@
 ---
-title: "Curvine 全链路每日测试报告 - 2026-08-06"
-linkTitle: "2026-08-06 全链路"
+title: "Curvine full-chain daily test report - 2026-08-06"
+linkTitle: "2026-08-06 full-chain"
 date: 2026-08-06T00:00:00Z
 weight: -20260806
 tags: [full-chain, daily, no-go]
 ---
 
-## 质量结论
+## Quality conclusion
 
-### 执行摘要
+### Executive summary
 
 > [!CAUTION]
-> 发布决策：**NO-GO**。流水线结果 **FAIL**；执行 7 个 profile，6 个通过，1 个失败。
+> Release decision: **NO-GO**. Pipeline **FAIL**; ran 7 profiles, 6 passed, 1 failed.
 
-存在阻断性失败，当前提交不得作为可发布版本；需完成归因、修复和定向回归后重新执行全链路测试。
+A blocking failure exists. This revision is not releasable. Finish attribution, fix, and targeted regression, then rerun the full-chain tests.
 
-### 质量门禁
+### Quality gates
 
-| 门禁 | 标准 | 实际 | 结论 |
+| Gate | Criterion | Actual | Verdict |
 | --- | --- | --- | --- |
-| 全链路结果 | 所有必跑 profile 通过 | 6/7 通过 | FAIL |
-| 失败归因 | 失败项已分类 | 1 个失败 | 待逐项确认 |
-| 资源清理 | 所有 profile cleanup 成功 | 7/7 | PASS |
+| Full-chain result | All required profiles passed | 6/7 passed | FAIL |
+| Failure attribution | Failures classified | 1 failure | pending per-item |
+| Resource cleanup | All profile cleanups succeeded | 7/7 | PASS |
 
-### 结论
+### Conclusion
 
-本次全链路测试未通过，按失败分类进入产品修复、Harness 修复或环境治理。
+This full-chain run did not pass. Route by failure class into product fix, harness fix, or environment work.
 
-未完成归因的 profile：fuse。
+Unattributed failed profile: fuse.
 
-## 测试结果
+## Test results
 
-### Profile 汇总
+### Profile summary
 
-| Profile | Preflight | 结果 | 耗时 | 分类 | Cleanup |
+| Profile | Preflight | Result | Duration | Class | Cleanup |
 | --- | --- | --- | --- | --- | --- |
 | fast | PASS | PASS | 1m 35s | passed | passed |
 | integration | PASS | PASS | 6m 08s | passed | passed |
@@ -45,12 +45,12 @@ tags: [full-chain, daily, no-go]
 
 ### LTP
 
-- 状态：**completed**
-- 已完成 suite：7
-- 待运行 suite：0
-- 测试统计：1129 passed / 0 real failed / 141 skipped / 0 report-consistency errors
+- Status: **completed**
+- Suites completed: 7
+- Suites remaining: 0
+- Stats: 1129 passed / 0 real failed / 141 skipped / 0 report-consistency errors
 
-| Suite | 状态 | Passed | Real failed | Skipped | Report errors | Return code |
+| Suite | Status | Passed | Real failed | Skipped | Report errors | Return code |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | fs_perms_simple | passed | 18 | 0 | 0 | 0 | 0 |
 | fsx | passed | 1 | 0 | 0 | 0 | 0 |
@@ -60,21 +60,21 @@ tags: [full-chain, daily, no-go]
 | fs-jfs | passed | 27 | 0 | 2 | 0 | 0 |
 | syscalls-jfs | passed | 1068 | 0 | 138 | 0 | 0 |
 
-#### 失败与异常用例
+#### Failed and abnormal cases
 
-未解析到 TFAIL/TBROK。
+No TFAIL/TBROK parsed.
 
-### 性能基准
+### Performance
 
 > [!NOTE]
-> 门禁策略：**仅报告，不阻断** 全链路结果；低于 baseline 时标黄/标红供人工跟进。
+> Gate policy: **report only, non-blocking** for the full-chain result. Mark yellow/red vs baseline for human follow-up.
 
-- 状态：**failed**
-- 门禁模式：**report_only**
+- Status: **failed**
+- Gate mode: **report_only**
 
-#### 元数据性能（本次）
+#### Metadata performance (this run)
 
-| ITEM | VALUE | AVG COST | P50 ms | P95 ms | P99 ms | MAX ms | SAMPLES | ERRORS | 状态 |
+| ITEM | VALUE | AVG COST | P50 ms | P95 ms | P99 ms | MAX ms | SAMPLES | ERRORS | Status |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | Create file | 21392.01 ops/s | 1.86 ms/op | 2.05 | 4.09 | 4.09 | 162.66 | 200000 | 0 | pass |
 | Stat file | 63836.79 ops/s | 0.62 ms/op | 1.02 | 1.02 | 2.05 | 2.59 | 200000 | 0 | pass |
@@ -82,9 +82,9 @@ tags: [full-chain, daily, no-go]
 | Rename file | 29170.42 ops/s | 1.36 ms/op | 2.05 | 4.09 | 4.09 | 5.01 | 200000 | 0 | pass |
 | Delete file | 29501.85 ops/s | 1.35 ms/op | 2.05 | 4.09 | 4.09 | 4.28 | 200000 | 0 | pass |
 
-#### FIO 读写性能（本次）
+#### FIO read/write (this run)
 
-| ITEM | SPEED GiB/s | IOPS | AVG COST | P50 ms | P95 ms | P99 ms | MAX ms | SAMPLES | ERRORS | 状态 |
+| ITEM | SPEED GiB/s | IOPS | AVG COST | P50 ms | P95 ms | P99 ms | MAX ms | SAMPLES | ERRORS | Status |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | Sequential write 64KB | 1.70 | 27840.27 | 9.00 ms/op | 8.98 | 10.55 | 11.47 | 18.43 | 262144 | 0 | pass |
 | Sequential read 64KB | 2.38 | 39044.38 | 6.13 ms/op | 5.73 | 10.55 | 12.39 | 20.34 | 262144 | 0 | pass |
@@ -99,7 +99,7 @@ tags: [full-chain, daily, no-go]
 | Random write 1MB | 2.97 | 3044.22 | 78.36 ms/op | 73.92 | 112.72 | 274.73 | 529.95 | 16384 | 0 | degraded |
 | Random read 1MB | 2.26 | 2314.78 | 105.69 ms/op | 106.43 | 119.01 | 126.35 | 187.02 | 16384 | 0 | pass |
 
-#### 元数据性能基准
+#### Metadata performance baseline
 
 | ITEM | VALUE | AVG COST | P50 ms | P95 ms | P99 ms | MAX ms | SAMPLES | ERRORS |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -109,7 +109,7 @@ tags: [full-chain, daily, no-go]
 | Rename file | 30314.48 ops/s | 1.31 ms/op | 2.05 | 4.09 | 4.09 | 5.58 | 200000 | 0 |
 | Delete file | 31231.33 ops/s | 1.27 ms/op | 2.05 | 4.09 | 4.09 | 4.89 | 200000 | 0 |
 
-#### FIO 读写性能基准
+#### FIO read/write baseline
 
 | ITEM | SPEED GiB/s | IOPS | AVG COST | P50 ms | P95 ms | P99 ms | MAX ms | SAMPLES | ERRORS |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -126,27 +126,27 @@ tags: [full-chain, daily, no-go]
 | Random write 1MB | 3.09 | 3164.16 | 74.79 ms/op | 72.88 | 105.38 | 229.64 | 481.01 | 16384 | 0 |
 | Random read 1MB | 2.15 | 2202.15 | 111.52 ms/op | 112.72 | 127.40 | 135.27 | 220.57 | 16384 | 0 |
 
-## 失败与归因
+## Failures and attribution
 
-### 失败分析
+### Failure analysis
 
 #### fuse
 
-- 测试目标：FUSE 挂载、文件 I/O 与 FIO 回归
-- 预期结果：挂载可读写，I/O 语义正确且无 EIO
-- 实际结果：exit code **40**；持续或预分配写入出现 EIO 或 ENOSPC，容量查询仍显示有空闲空间
-- 业务影响：阻断全链路质量门禁；归因完成前不可宣称该能力可用
-- 分类：**unknown_failure**
-- 失败层：**test**
-- 根因置信度：低
-- Cleanup：**passed**
-- 下一步：由 fuse-owner 完成归因；确认产品回归后建 Issue，修复并审查通过后再提 PR
+- Goal: FUSE mount, file I/O, and FIO regression
+- Expected: Mount is readable/writable; I/O semantics are correct; no EIO
+- Actual: exit code **40**; sustained or preallocated writes returned EIO or ENOSPC while capacity still showed free space
+- Impact: Blocks the full-chain quality gate; do not claim this capability until attribution is done
+- Class: **unknown_failure**
+- Failure layer: **test**
+- Root-cause confidence: low
+- Cleanup: **passed**
+- Next step: fuse-owner completes attribution; file an Issue after a confirmed product regression, then fix, review, and open a PR
 
-### 失败用例摘要
+### Failed case summary
 
-正文展示 6/6 条；全量见「全部失败用例」。
+Body shows 6/6 cases; full list is under All failed cases.
 
-| 用例 | Suite / Package | 状态 | 关键错误 | 根因组 |
+| Case | Suite / Package | Status | Key error | Root group |
 | --- | --- | --- | --- | --- |
 | FIO Sequential Write Test (256KB blocks) | fio / fuse | FAIL | FIO Sequential Write test failed | g-fuse-write-eio |
 | FIO Sequential Read Test (256KB blocks) | fio / fuse | FAIL | FIO Sequential Read test failed | g-fuse-write-eio |
@@ -155,35 +155,35 @@ tags: [full-chain, daily, no-go]
 | FIO Mixed Random Read/Write Test (256KB blocks, 70% read, 30% write) | fio / fuse | FAIL | FIO Mixed Random Read/Write test failed | g-fuse-write-eio |
 | fuse | fuse / fuse | FAILED | status failed | g-fuse-write-eio |
 
-### 失败用例对账
+### Failed case reconciliation
 
-| Profile | 报告失败数 | 源失败数 | 差异 | 解释 |
+| Profile | Reported failures | Source failures | Delta | Notes |
 | --- | ---: | ---: | ---: | --- |
-| fuse | 6 | 6 | +0 | 数量一致 |
+| fuse | 6 | 6 | +0 | Counts match |
 
-### 共性根因组
+### Common root-cause groups
 
-归因覆盖率：**6/6（100.0%）**。无证据前不做预聚类。
+Attribution coverage: **6/6 (100.0%)**. Do not pre-cluster without evidence.
 
 #### P1 g-fuse-write-eio
 
-- Profiles：fuse
-- 根因语义：假设 FUSE 或后端存储在持续写入、预分配写入时返回 EIO 或 ENOSPC；worker 与 master 错误日志尚未定位到具体子系统，置信度中等
-- 建议：对齐首次 FIO EIO 与 fallocate ENOSPC 的时间点，核对 worker 与 master ERROR，并追踪 FUSE 写路径与块分配
-- 唯一逻辑失败：6
-- 模型分类：**unknown_failure**；置信度：**medium**；Issue：**needs_human**
-- 验证方案：修复后重跑 fuse profile，下列用例及 fallocate、大文件 dd 均应无 EIO 或 ENOSPC
-- FIO Sequential Write Test (256KB blocks)（fuse）：FIO Sequential Write test failed
-- FIO Sequential Read Test (256KB blocks)（fuse）：FIO Sequential Read test failed
-- FIO Random Write Test (256KB blocks)（fuse）：FIO Random Write test failed
-- FIO Random Read Test (256KB blocks)（fuse）：FIO Random Read test failed
-- FIO Mixed Random Read/Write Test (256KB blocks, 70% read, 30% write)（fuse）：FIO Mixed Random Read/Write test failed
+- Profiles: fuse
+- Hypothesis: FUSE or backend storage returned EIO or ENOSPC on sustained or preallocated writes; worker and master error logs have not yet pinpointed a subsystem; confidence is medium
+- Recommendation: Align the first FIO EIO and fallocate ENOSPC timestamps, check worker and master ERROR logs, and trace the FUSE write path and block allocation
+- Unique logical failures: 6
+- Model class: **unknown_failure**; confidence: **medium**; Issue: **needs_human**
+- Verification: After the fix, rerun the fuse profile; the cases below plus fallocate and large-file dd must show no EIO or ENOSPC
+- FIO Sequential Write Test (256KB blocks) (fuse): FIO Sequential Write test failed
+- FIO Sequential Read Test (256KB blocks) (fuse): FIO Sequential Read test failed
+- FIO Random Write Test (256KB blocks) (fuse): FIO Random Write test failed
+- FIO Random Read Test (256KB blocks) (fuse): FIO Random Read test failed
+- FIO Mixed Random Read/Write Test (256KB blocks, 70% read, 30% write) (fuse): FIO Mixed Random Read/Write test failed
 
-### 全部失败用例
+### All failed cases
 
-不截断。
+Untruncated.
 
-| 用例 | Suite / Package | 状态 | 关键错误 | 根因组 |
+| Case | Suite / Package | Status | Key error | Root group |
 | --- | --- | --- | --- | --- |
 | FIO Sequential Write Test (256KB blocks) | fio / fuse | FAIL | FIO Sequential Write test failed | g-fuse-write-eio |
 | FIO Sequential Read Test (256KB blocks) | fio / fuse | FAIL | FIO Sequential Read test failed | g-fuse-write-eio |
@@ -192,23 +192,23 @@ tags: [full-chain, daily, no-go]
 | FIO Mixed Random Read/Write Test (256KB blocks, 70% read, 30% write) | fio / fuse | FAIL | FIO Mixed Random Read/Write test failed | g-fuse-write-eio |
 | fuse | fuse / fuse | FAILED | status failed | g-fuse-write-eio |
 
-## 闭环
+## Follow-up
 
-### 缺陷与修复
+### Defects and fixes
 
-- GitHub Issue：**needs_human**
-- GitHub PR：**pending_fix_review**
+- GitHub Issue: **needs_human**
+- GitHub PR: **pending_fix_review**
 
-闭环标准：Issue 含复现步骤、预期/实际、影响、验收；PR 仅在修复、测试和审查通过后创建，并关联 Issue。
+Close-out bar: the Issue includes repro, expected/actual, impact, and acceptance; a PR is opened only after fix, tests, and review, and it must link the Issue on CurvineIO/curvine.
 
-### 风险
+### Risks
 
-- 局部 profile 通过不能替代全链路 NO-GO。
-- 未完成归因的 profile：fuse。文中原因仅为待验证假设。
+- A subset of green profiles does not override a full-chain NO-GO.
+- Unattributed failed profile: fuse. Causes in this report are unverified hypotheses.
 
-### 后续行动
+### Next actions
 
-| 优先级 | 角色 | 行动 | 完成标准 |
+| Priority | Role | Action | Done when |
 | --- | --- | --- | --- |
-| P0 | fuse-owner | 完成归因、建 Issue、修复并定向回归 | fuse 通过，Issue 与 PR 完整 |
-| P0 | 测试负责人 | 重跑全链路并更新报告 | 必跑 profile 全部通过 |
+| P0 | fuse-owner | Finish attribution, file an Issue, fix, and run targeted regression | fuse passes; Issue and PR complete |
+| P0 | test-owner | Rerun the full chain and update the report | All required profiles pass |

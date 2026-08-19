@@ -2,14 +2,13 @@ baseURL: https://curvineio.github.io/test-reports/
 title: Curvine Test Reports
 enableRobotsTXT: true
 enableGitInfo: true
-hasCJKLanguage: true
-defaultContentLanguage: zh-cn
+defaultContentLanguage: en
 enableInlineShortcodes: true
 
 languages:
-  zh-cn:
-    label: 简体中文
-    locale: zh-cn
+  en:
+    label: English
+    locale: en-US
     title: Curvine Test Reports
     weight: 1
 
@@ -29,7 +28,7 @@ markup:
 
 menu:
   main:
-    - name: 报告
+    - name: Reports
       pageRef: /reports
       weight: 1
     - name: Search
@@ -38,12 +37,12 @@ menu:
         type: search
     - name: GitHub
       weight: 3
-      url: https://github.com/CurvineIO/test-reports
+      url: https://github.com/CurvineIO/curvine
       params:
         icon: github
 
 params:
-  description: Curvine 近 30 天公开测试结果
+  description: Public Curvine test results from the last 30 days
   navbar:
     displayTitle: true
     displayLogo: false

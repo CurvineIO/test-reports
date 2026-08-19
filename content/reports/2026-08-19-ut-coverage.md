@@ -15,6 +15,6 @@ Sample daily report used to verify GitHub Pages.
 
 Failed:
 
-- `curvine-client::ttl_test::test_ttl_cleanup`
+- **curvine-client::ttl_test::test_ttl_cleanup**
 
 [Sample attachment](../files/2026-08-19/note.html)
