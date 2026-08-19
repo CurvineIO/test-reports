@@ -1,0 +1,29 @@
+baseURL = 'https://curvineio.github.io/test-reports/'
+locale = 'en-us'
+title = 'Curvine Test Reports'
+theme = 'paper'
+
+[pagination]
+  pagerSize = 20
+
+[params]
+  color = 'linen'
+  mainSections = ['reports']
+  github = 'CurvineIO'
+  name = 'Curvine'
+  bio = 'Test reports for the last 30 days'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[menu]
+  [[menu.main]]
+    identifier = 'reports'
+    name = 'Reports'
+    url = '/reports/'
+    weight = 10
+
+[taxonomies]
+  tag = 'tags'
