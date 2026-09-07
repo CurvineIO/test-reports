@@ -66,30 +66,30 @@ This full-chain run did not pass. Failed profiles require resolution before rele
 
 #### Metadata performance (this run)
 
-| ITEM | VALUE | AVG COST | P50 ms | P95 ms | P99 ms | MAX ms | SAMPLES | ERRORS | Status |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Create file | 23097.31 ops/s | 1.73 ms/op | 2.05 | 4.09 | 4.09 | 163.60 | 200000 | 0 | pass |
-| Stat file | 71578.65 ops/s | 0.56 ms/op | 1.02 | 1.02 | 1.02 | 1.19 | 200000 | 0 | pass |
-| Open file | 69457.74 ops/s | 0.57 ms/op | 1.02 | 1.02 | 1.02 | 2.49 | 200000 | 0 | pass |
-| Rename file | 32699.97 ops/s | 1.21 ms/op | 2.05 | 4.09 | 4.09 | 4.22 | 200000 | 0 | pass |
-| Delete file | 32370.10 ops/s | 1.23 ms/op | 2.05 | 4.09 | 4.09 | 4.39 | 200000 | 0 | pass |
+| ITEM | VALUE | AVG COST | P50 ms | P95 ms | P99 ms | MAX ms | SAMPLES | ERRORS | Baseline VALUE | VALUE delta | Baseline P99 ms | P99 delta | Status |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| Create file | 23097.31 ops/s | 1.73 ms/op | 2.05 | 4.09 | 4.09 | 163.60 | 200000 | 0 | 21668.74 ops/s | +6.6% | 4.09 | +0.1% | pass |
+| Stat file | 71578.65 ops/s | 0.56 ms/op | 1.02 | 1.02 | 1.02 | 1.19 | 200000 | 0 | 63487.48 ops/s | +12.7% | 2.05 | -50.1% | pass |
+| Open file | 69457.74 ops/s | 0.57 ms/op | 1.02 | 1.02 | 1.02 | 2.49 | 200000 | 0 | 63113.20 ops/s | +10.1% | 2.05 | -50.1% | pass |
+| Rename file | 32699.97 ops/s | 1.21 ms/op | 2.05 | 4.09 | 4.09 | 4.22 | 200000 | 0 | 30314.48 ops/s | +7.9% | 4.09 | +0.1% | pass |
+| Delete file | 32370.10 ops/s | 1.23 ms/op | 2.05 | 4.09 | 4.09 | 4.39 | 200000 | 0 | 31231.33 ops/s | +3.6% | 4.09 | +0.1% | pass |
 
 #### FIO read/write (this run)
 
-| ITEM | SPEED GiB/s | IOPS | AVG COST | P50 ms | P95 ms | P99 ms | MAX ms | SAMPLES | ERRORS | Status |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Sequential write 64KB | 1.67 | 27349.40 | 9.12 ms/op | 9.11 | 10.55 | 11.47 | 17.34 | 262144 | 0 | pass |
-| Sequential read 64KB | 2.28 | 37353.09 | 6.55 ms/op | 6.19 | 10.42 | 12.65 | 22.61 | 262144 | 0 | pass |
-| Random write 64KB | 1.73 | 28413.61 | 8.72 ms/op | 8.59 | 9.76 | 10.68 | 326.94 | 262144 | 0 | pass |
-| Random read 64KB | 1.03 | 16821.36 | 14.64 ms/op | 14.48 | 18.22 | 20.32 | 39.44 | 262144 | 0 | pass |
-| Sequential write 256KB | 2.59 | 10604.53 | 22.51 ms/op | 24.25 | 32.64 | 37.49 | 53.60 | 65536 | 0 | pass |
-| Sequential read 256KB | 2.53 | 10343.43 | 22.96 ms/op | 25.03 | 28.70 | 30.54 | 55.31 | 65536 | 0 | degraded |
-| Random write 256KB | 2.47 | 10115.14 | 23.66 ms/op | 23.20 | 28.97 | 32.11 | 444.19 | 65536 | 0 | pass |
-| Random read 256KB | 2.17 | 8899.51 | 27.44 ms/op | 27.39 | 33.16 | 36.44 | 56.87 | 65536 | 0 | pass |
-| Sequential write 1MB | 3.03 | 3105.97 | 75.62 ms/op | 70.78 | 152.04 | 200.28 | 362.41 | 16384 | 0 | pass |
-| Sequential read 1MB | 2.15 | 2197.42 | 115.08 ms/op | 115.87 | 122.16 | 127.40 | 212.11 | 16384 | 0 | degraded |
-| Random write 1MB | 2.77 | 2839.02 | 83.35 ms/op | 82.31 | 116.92 | 261.10 | 512.36 | 16384 | 0 | pass |
-| Random read 1MB | 2.13 | 2181.62 | 113.86 ms/op | 114.82 | 127.40 | 137.36 | 199.54 | 16384 | 0 | pass |
+| ITEM | SPEED GiB/s | IOPS | AVG COST | P50 ms | P95 ms | P99 ms | MAX ms | SAMPLES | ERRORS | Baseline SPEED GiB/s | SPEED delta | Baseline P99 ms | P99 delta | Status |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| Sequential write 64KB | 1.67 | 27349.40 | 9.12 ms/op | 9.11 | 10.55 | 11.47 | 17.34 | 262144 | 0 | 1.71 | -2.4% | 10.94 | +4.8% | pass |
+| Sequential read 64KB | 2.28 | 37353.09 | 6.55 ms/op | 6.19 | 10.42 | 12.65 | 22.61 | 262144 | 0 | 2.28 | 0.0% | 12.78 | -1.0% | pass |
+| Random write 64KB | 1.73 | 28413.61 | 8.72 ms/op | 8.59 | 9.76 | 10.68 | 326.94 | 262144 | 0 | 1.77 | -2.0% | 10.29 | +3.8% | pass |
+| Random read 64KB | 1.03 | 16821.36 | 14.64 ms/op | 14.48 | 18.22 | 20.32 | 39.44 | 262144 | 0 | 1.12 | -8.3% | 19.53 | +4.0% | pass |
+| Sequential write 256KB | 2.59 | 10604.53 | 22.51 ms/op | 24.25 | 32.64 | 37.49 | 53.60 | 65536 | 0 | 2.73 | -5.2% | 36.44 | +2.9% | pass |
+| Sequential read 256KB | 2.53 | 10343.43 | 22.96 ms/op | 25.03 | 28.70 | 30.54 | 55.31 | 65536 | 0 | 3.11 | -18.8% | 26.08 | +17.1% | degraded |
+| Random write 256KB | 2.47 | 10115.14 | 23.66 ms/op | 23.20 | 28.97 | 32.11 | 444.19 | 65536 | 0 | 2.51 | -1.6% | 30.28 | +6.1% | pass |
+| Random read 256KB | 2.17 | 8899.51 | 27.44 ms/op | 27.39 | 33.16 | 36.44 | 56.87 | 65536 | 0 | 2.37 | -8.3% | 34.34 | +6.1% | pass |
+| Sequential write 1MB | 3.03 | 3105.97 | 75.62 ms/op | 70.78 | 152.04 | 200.28 | 362.41 | 16384 | 0 | 3.45 | -12.1% | 191.89 | +4.4% | pass |
+| Sequential read 1MB | 2.15 | 2197.42 | 115.08 ms/op | 115.87 | 122.16 | 127.40 | 212.11 | 16384 | 0 | 2.72 | -21.1% | 108.53 | +17.4% | degraded |
+| Random write 1MB | 2.77 | 2839.02 | 83.35 ms/op | 82.31 | 116.92 | 261.10 | 512.36 | 16384 | 0 | 3.09 | -10.3% | 229.64 | +13.7% | pass |
+| Random read 1MB | 2.13 | 2181.62 | 113.86 ms/op | 114.82 | 127.40 | 137.36 | 199.54 | 16384 | 0 | 2.15 | -0.9% | 135.27 | +1.5% | pass |
 
 ## Failures and attribution
 
