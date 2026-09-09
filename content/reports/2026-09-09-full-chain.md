@@ -31,13 +31,13 @@ This full-chain run did not pass. Failed profiles require resolution before rele
 
 | Profile | Preflight | Result | Duration | Class | Cleanup |
 | --- | --- | --- | --- | --- | --- |
-| fast | PASS | PASS | 12m 23s | passed | PASSED |
-| integration | PASS | PASS | 12m 05s | passed | PASSED |
-| daily | PASS | FAIL | 20m 39s | unknown_failure | PASSED |
-| fuse | PASS | FAIL | 3m 38s | unknown_failure | PASSED |
-| ltp | PASS | PASS | 50m 05s | passed | PASSED |
-| csi | PASS | PASS | 0m 35s | passed | PASSED |
-| perf-benchmark | NOT_RECORDED | FAILED | 1m 58s | failed | PASSED |
+| fast | PASS | PASS | 12m 07s | passed | PASSED |
+| integration | PASS | PASS | 12m 06s | passed | PASSED |
+| daily | PASS | FAIL | 20m 12s | unknown_failure | PASSED |
+| fuse | PASS | FAIL | 3m 02s | unknown_failure | PASSED |
+| ltp | PASS | PASS | 49m 15s | passed | PASSED |
+| csi | PASS | PASS | 0m 36s | passed | PASSED |
+| perf-benchmark | NOT_RECORDED | FAILED | 5m 41s | failed | PASSED |
 
 ### LTP
 
@@ -68,28 +68,28 @@ This full-chain run did not pass. Failed profiles require resolution before rele
 
 | ITEM | VALUE | AVG COST | P50 ms | P95 ms | P99 ms | MAX ms | SAMPLES | ERRORS | Baseline VALUE | VALUE delta | Baseline P99 ms | P99 delta | Status |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Create file | 23407.32 ops/s | 1.70 ms/op | 2.05 | 4.09 | 4.09 | 158.56 | 200000 | 0 | 21668.74 ops/s | +8.0% | 4.09 | +0.1% | pass |
-| Stat file | 70594.64 ops/s | 0.56 ms/op | 1.02 | 1.02 | 1.02 | 3.06 | 200000 | 0 | 63487.48 ops/s | +11.2% | 2.05 | -50.1% | pass |
-| Open file | 70275.83 ops/s | 0.57 ms/op | 1.02 | 1.02 | 1.02 | 1.79 | 200000 | 0 | 63113.20 ops/s | +11.3% | 2.05 | -50.1% | pass |
-| Rename file | 32871.07 ops/s | 1.20 ms/op | 2.05 | 3.57 | 3.57 | 3.57 | 200000 | 0 | 30314.48 ops/s | +8.4% | 4.09 | -12.8% | pass |
-| Delete file | 32472.27 ops/s | 1.22 ms/op | 2.05 | 4.09 | 4.09 | 4.81 | 200000 | 0 | 31231.33 ops/s | +4.0% | 4.09 | +0.1% | pass |
+| Create file | 23168.30 ops/s | 1.72 ms/op | 2.05 | 4.09 | 4.09 | 4.57 | 200000 | 0 | 21668.74 ops/s | +6.9% | 4.09 | +0.1% | pass |
+| Stat file | 69786.89 ops/s | 0.57 ms/op | 1.02 | 1.02 | 1.02 | 2.93 | 200000 | 0 | 63487.48 ops/s | +9.9% | 2.05 | -50.1% | pass |
+| Open file | 69180.89 ops/s | 0.58 ms/op | 1.02 | 1.02 | 1.02 | 1.25 | 200000 | 0 | 63113.20 ops/s | +9.6% | 2.05 | -50.1% | pass |
+| Rename file | 33539.96 ops/s | 1.19 ms/op | 2.05 | 3.61 | 3.61 | 3.61 | 200000 | 0 | 30314.48 ops/s | +10.6% | 4.09 | -11.6% | pass |
+| Delete file | 32920.34 ops/s | 1.21 ms/op | 2.05 | 4.09 | 4.09 | 4.68 | 200000 | 0 | 31231.33 ops/s | +5.4% | 4.09 | +0.1% | pass |
 
 #### FIO read/write (this run)
 
 | ITEM | SPEED GiB/s | IOPS | AVG COST | P50 ms | P95 ms | P99 ms | MAX ms | SAMPLES | ERRORS | Baseline SPEED GiB/s | SPEED delta | Baseline P99 ms | P99 delta | Status |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Sequential write 64KB | 1.74 | 28466.07 | 8.76 ms/op | 8.72 | 10.29 | 11.08 | 18.01 | 262144 | 0 | 1.71 | +1.6% | 10.94 | +1.2% | pass |
-| Sequential read 64KB | 2.48 | 40598.42 | 5.91 ms/op | 5.60 | 9.90 | 12.12 | 24.00 | 262144 | 0 | 2.28 | +8.7% | 12.78 | -5.1% | pass |
-| Random write 64KB | 1.81 | 29691.24 | 8.31 ms/op | 8.09 | 9.24 | 9.90 | 328.16 | 262144 | 0 | 1.77 | +2.4% | 10.29 | -3.8% | pass |
-| Random read 64KB | 1.12 | 18415.45 | 13.43 ms/op | 13.30 | 16.91 | 19.27 | 54.83 | 262144 | 0 | 1.12 | +0.4% | 19.53 | -1.3% | pass |
-| Sequential write 256KB | 2.96 | 12116.10 | 19.32 ms/op | 20.58 | 30.54 | 35.91 | 48.83 | 65536 | 0 | 2.73 | +8.4% | 36.44 | -1.4% | pass |
-| Sequential read 256KB | 2.56 | 10469.01 | 22.66 ms/op | 25.56 | 28.97 | 31.06 | 55.85 | 65536 | 0 | 3.11 | -17.8% | 26.08 | +19.1% | degraded |
-| Random write 256KB | 2.79 | 11437.35 | 21.07 ms/op | 20.05 | 25.30 | 28.44 | 510.28 | 65536 | 0 | 2.51 | +11.2% | 30.28 | -6.1% | pass |
-| Random read 256KB | 2.39 | 9775.66 | 24.74 ms/op | 24.77 | 30.28 | 32.90 | 47.31 | 65536 | 0 | 2.37 | +0.7% | 34.34 | -4.2% | pass |
-| Sequential write 1MB | 3.51 | 3596.93 | 61.40 ms/op | 60.03 | 139.46 | 181.40 | 280.45 | 16384 | 0 | 3.45 | +1.8% | 191.89 | -5.5% | pass |
-| Sequential read 1MB | 3.03 | 3099.51 | 73.78 ms/op | 76.02 | 96.99 | 102.24 | 173.82 | 16384 | 0 | 2.72 | +11.3% | 108.53 | -5.8% | pass |
-| Random write 1MB | 3.05 | 3121.36 | 75.24 ms/op | 68.68 | 103.28 | 497.03 | 753.29 | 16384 | 0 | 3.09 | -1.4% | 229.64 | +116.4% | fail |
-| Random read 1MB | 2.23 | 2280.62 | 108.82 ms/op | 109.58 | 122.16 | 128.45 | 174.27 | 16384 | 0 | 2.15 | +3.6% | 135.27 | -5.0% | pass |
+| Sequential write 64KB | 1.67 | 27320.90 | 9.15 ms/op | 9.11 | 10.55 | 11.47 | 24.58 | 262144 | 0 | 1.71 | -2.5% | 10.94 | +4.8% | pass |
+| Sequential read 64KB | 2.32 | 37958.88 | 6.39 ms/op | 5.93 | 11.21 | 13.17 | 28.65 | 262144 | 0 | 2.28 | +1.6% | 12.78 | +3.1% | pass |
+| Random write 64KB | 1.73 | 28389.00 | 8.72 ms/op | 8.59 | 9.76 | 10.68 | 292.65 | 262144 | 0 | 1.77 | -2.1% | 10.29 | +3.8% | pass |
+| Random read 64KB | 1.05 | 17225.92 | 14.04 ms/op | 13.96 | 17.43 | 19.53 | 56.85 | 262144 | 0 | 1.12 | -6.1% | 19.53 | 0.0% | pass |
+| Sequential write 256KB | 2.53 | 10359.79 | 23.00 ms/op | 24.51 | 32.90 | 37.49 | 47.83 | 65536 | 0 | 2.73 | -7.4% | 36.44 | +2.9% | pass |
+| Sequential read 256KB | 3.22 | 13183.67 | 17.37 ms/op | 18.22 | 24.51 | 27.13 | 58.05 | 65536 | 0 | 3.11 | +3.5% | 26.08 | +4.0% | pass |
+| Random write 256KB | 2.45 | 10051.53 | 24.21 ms/op | 23.46 | 28.97 | 31.85 | 476.79 | 65536 | 0 | 2.51 | -2.2% | 30.28 | +5.2% | pass |
+| Random read 256KB | 2.31 | 9471.89 | 25.98 ms/op | 25.82 | 31.33 | 34.34 | 46.24 | 65536 | 0 | 2.37 | -2.4% | 34.34 | 0.0% | pass |
+| Sequential write 1MB | 3.31 | 3388.62 | 64.64 ms/op | 58.46 | 135.27 | 179.31 | 287.72 | 16384 | 0 | 3.45 | -4.1% | 191.89 | -6.6% | pass |
+| Sequential read 1MB | 3.22 | 3294.59 | 69.32 ms/op | 77.07 | 91.75 | 94.90 | 140.92 | 16384 | 0 | 2.72 | +18.3% | 108.53 | -12.6% | pass |
+| Random write 1MB | 2.61 | 2667.97 | 85.52 ms/op | 73.92 | 117.96 | 784.33 | 1347.35 | 16384 | 0 | 3.09 | -15.7% | 229.64 | +241.5% | fail |
+| Random read 1MB | 2.32 | 2378.28 | 104.32 ms/op | 105.38 | 117.96 | 128.45 | 183.40 | 16384 | 0 | 2.15 | +8.0% | 135.27 | -5.0% | pass |
 
 ## Failures and attribution
 
@@ -108,14 +108,14 @@ This full-chain run did not pass. Failed profiles require resolution before rele
 - Class: **flaky**
 - Failure layer: **test**
 - Root-cause confidence: **medium**
-- Root cause: The propose_response_waits_until_committed_entry_is_applied unit test uses a 3-second timeout for apply to start after propose. Under load or slow Raft election timing (log shows 16 seconds before election began), the committed entry may not reach BlockingApplyAppStorage within the timeout window. Same SHA passed on the immediately prior daily run, suggesting intermittent timing sensitivity rather than a deterministic product defect.
-- Recommendation: If failures recur, increase the wait_started timeout in raft_node_test.rs or investigate Raft election/apply latency under parallel test load. No product code change warranted from a single flaky occurrence on a passing SHA.
+- Root cause: The propose_response_waits_until_committed_entry_is_applied unit test uses a 3-second timeout for apply to start after propose. Under load or slow Raft election timing (log shows ~14 seconds before election began), the committed entry may not reach BlockingApplyAppStorage within the timeout window. Daily passed on the immediately prior run at 5ecf8ca2, suggesting intermittent timing sensitivity rather than a deterministic product defect on 39069ae2.
+- Recommendation: If failures recur, increase the wait_started timeout in raft_node_test.rs or investigate Raft election/apply latency under parallel test load. No product code change warranted from intermittent timeout without stable reproduction across commits.
 
 ### Failed case summary
 
 | Case | Suite / Package | Status | Key error | Root group |
 | --- | --- | --- | --- | --- |
-| propose_response_waits_until_committed_entry_is_applied | raft_node_test / curvine-raft | FAILED | thread 'propose_response_waits_until_committed_entry_is_applied' (29699) panicked at crates/metadata/curvine-raft/tests/raft_node_test.rs:615:14: | g-raft-propose-apply-timeout-flaky |
+| propose_response_waits_until_committed_entry_is_applied | raft_node_test / curvine-raft | FAILED | thread 'propose_response_waits_until_committed_entry_is_applied' (29715) panicked at crates/metadata/curvine-raft/tests/raft_node_test.rs:615:14: | g-raft-propose-apply-timeout-flaky |
 | FIO Sequential Write Test (256KB blocks) | fio / fuse | FAIL | FIO Sequential Write test failed | g-fuse-buffered-io-eio |
 | FIO Sequential Read Test (256KB blocks) | fio / fuse | FAIL | FIO Sequential Read test failed | g-fuse-buffered-io-eio |
 | FIO Random Write Test (256KB blocks) | fio / fuse | FAIL | FIO Random Write test failed | g-fuse-buffered-io-eio |
@@ -140,7 +140,7 @@ This full-chain run did not pass. Failed profiles require resolution before rele
 #### g-raft-propose-apply-timeout-flaky
 
 - Model class: **flaky**; confidence: **medium**
-- Recommendation: If failures recur, increase the wait_started timeout in raft_node_test.rs or investigate Raft election/apply latency under parallel test load. No product code change warranted from a single flaky occurrence on a passing SHA.
+- Recommendation: If failures recur, increase the wait_started timeout in raft_node_test.rs or investigate Raft election/apply latency under parallel test load. No product code change warranted from intermittent timeout without stable reproduction across commits.
 
 
 ## Follow-up
@@ -157,7 +157,7 @@ This full-chain run did not pass. Failed profiles require resolution before rele
 ### Next actions
 
 - Review e01cf918 changes in curvine-fuse/src/cli/mount_args.rs and crates/common/curvine-config/src/fuse_conf.rs ClientConfCliOverrides generation; compare effective mount flags against eb76f94a and restore correct buffered I/O behavior.
-- If failures recur, increase the wait_started timeout in raft_node_test.rs or investigate Raft election/apply latency under parallel test load. No product code change warranted from a single flaky occurrence on a passing SHA.
+- If failures recur, increase the wait_started timeout in raft_node_test.rs or investigate Raft election/apply latency under parallel test load. No product code change warranted from intermittent timeout without stable reproduction across commits.
 - Rerun the full chain after fixes and require all release gates to pass.
 
 ## Publication note
